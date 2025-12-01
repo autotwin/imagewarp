@@ -1,6 +1,6 @@
 # https://packaging.python.org/en/latest/tutorials/packaging-projects/
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 77.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -14,7 +14,7 @@ authors = [
 ]
 dependencies = [
     "numpy",
-    "pillow"
+    "pillow",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -28,7 +28,13 @@ requires-python = ">=3.11"
 dev = [
     "pytest",
     "pytest-cov",
+    "black",
+    "flake8",
+    "pdoc",
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.uv]
+native-tls = true
