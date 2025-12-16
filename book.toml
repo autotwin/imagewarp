@@ -1,0 +1,11 @@
+[book]
+authors = ["Andrew T. Polonsky"]
+language = "en"
+src = "docs/userguide/src"
+title = "User Guide"
+description = "imagewarp userguide and tutorial"
+
+[build]
+build-dir = "docs/userguide/book"
+
+[preprocessor.cmdrun]

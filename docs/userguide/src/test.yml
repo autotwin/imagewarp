@@ -1,0 +1,6 @@
+a_list:
+- item_1
+- item_2
+
+variable: value
+variable_2: 42
