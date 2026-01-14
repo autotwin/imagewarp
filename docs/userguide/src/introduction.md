@@ -18,6 +18,9 @@ Here
 test again!
 
 
-<!-- cmdrun warp images run-tests tests/test_utilities.py::test_checkerboard --quiet-->
+<!-- cmdrun warp images run-tests tests/test_utilities.py::test_checkerboard --caption "Figure: Standard checkerboard pattern" --quiet-->
+
+
+
 
 ---

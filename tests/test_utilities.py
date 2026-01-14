@@ -23,6 +23,6 @@ def test_checkerboard(image_dir, request):
 
     ut.save_image(img=board, filename=filename)
 
-    assert True
+    # assert False
 
     return None
