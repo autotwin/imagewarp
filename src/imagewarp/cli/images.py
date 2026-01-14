@@ -46,7 +46,7 @@ def run_tests(
     docs/userguide/src/images will emit a Markdown image
     link that cmdrun will pick up and render in your book.
     """
-    # Ensure our image folder exists
+    # # Ensure our image folder exists #TODO hardcode fix
     image_dir = Path("docs") / "userguide" / "src" / "images"
     image_dir.mkdir(parents=True, exist_ok=True)
 
@@ -67,8 +67,8 @@ def run_tests(
         pytest_cmd.append("tests")
 
     # Run from your project root so pytest can find tests/ and conftest.py
-    project_root = Path(__file__).parents[3]
-    book_src = project_root / "docs" / "userguide" / "src"
+    project_root = Path(__file__).parents[3]  # TODO hardcode fix?
+    book_src = project_root / "docs" / "userguide" / "src"  # TODO hardcode fix
 
     result = subprocess.run(
         pytest_cmd,
@@ -96,7 +96,7 @@ def run_tests(
                 # turn it into a relative path under book_src:
                 rel = abs_path.relative_to(book_src)
                 # now echo a link mdbook can actually render:
-                typer.echo(f"![{alttext}](images/{rel.name})")
+                typer.echo(f"![{alttext}](images/{rel.name})")  # TODO hardcode
             else:
                 # if it didn’t match, just echo it raw
                 typer.echo(line)
@@ -106,55 +106,6 @@ def run_tests(
         typer.echo(result.stderr, err=True)
 
     raise typer.Exit(code=result.returncode)
-
-
-# @app.command(
-#     cls=CustomCLICommand,
-#     name="run-tests",
-#     short_help="Run unit tests",
-# )
-# def run_tests():
-#     """
-#     Run pytest on your utilities tests. Any images that the tests generate
-#     into docs/userguide/src/images will be picked up by the cmdrun decorator
-#     and printed out as Markdown image links.
-#     """
-#     # 1) Ensure the image directory exists
-#     image_dir = Path("docs") / "userguide" / "src" / "images"
-#     image_dir.mkdir(parents=True, exist_ok=True)
-
-#     # 2) Build the pytest command
-#     #    -m pytest ensures we use the same interpreter environment
-#     pytest_args = [
-#         sys.executable,
-#         "-m",
-#         "pytest",
-#         "-q",  # quiet output
-#         "--tb=short",  # shorter tracebacks
-#         "tests/test_utilities.py",
-#     ]
-
-#     # 3) Run in the project root so pytest can discover tests and conftest
-#     project_root = Path(__file__).parents[3]  # adjust if needed
-#     result = subprocess.run(
-#         pytest_args,
-#         cwd=project_root,
-#         capture_output=True,
-#         text=True,
-#     )
-
-#     # 4) Echo results
-#     if result.returncode == 0:
-#         typer.secho("✅ All tests passed successfully.", fg=typer.colors.GREEN)
-#     else:
-#         typer.secho("❌ Some tests failed.", fg=typer.colors.RED)
-
-#     # Always print stdout/stderr so cmdrun can pick up the decorator’s markdown
-#     typer.echo(result.stdout)
-#     typer.echo(result.stderr, err=True)
-
-#     # Exit with the same code so CI knows if tests failed
-#     raise typer.Exit(code=result.returncode)
 
 
 @app.callback()

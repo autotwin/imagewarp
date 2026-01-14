@@ -7,7 +7,7 @@ from conftest import cmdrun_test
 
 @cmdrun_test
 def test_checkerboard(image_dir, request):
-    n_squares = 10
+    n_squares = 5
     square_size_px = 10
 
     # get the test's own name
