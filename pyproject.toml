@@ -15,6 +15,10 @@ authors = [
 dependencies = [
     "numpy",
     "pillow",
+    "matplotlib",
+    "typer",
+    "click",
+    "rich",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -35,6 +39,12 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+# CLI Entry Points
+# https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+[project.scripts]
+warp = "imagewarp.cli.main:app"
+
 
 [tool.uv]
 native-tls = true

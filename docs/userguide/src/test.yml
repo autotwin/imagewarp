@@ -4,3 +4,4 @@ a_list:
 
 variable: value
 variable_2: 42
+var_3: true
